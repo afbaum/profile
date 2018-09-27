@@ -3,44 +3,50 @@ import ReactDOM from 'react-dom';
 
 import TitleNav from './components/navbar.js';
 import Head from './components/head.js';
-import Finance from './components/finance.js';
-import ProductList from './components/productlist.js';
-import Forum from './components/forum.js';
-import Youtube from './components/Youtube.js';
+import Bored from './components/Bored/Bored.js';
 import './App.css';
 
-var array =[
-  {id: 100, product:"Apple", price:3},
-  {id: 101, product:"Banana", price:1},
-  {id: 102, product:"Carrot", price:2},
-  {id: 103, product:"Donuts", price:5},
-  {id: 104, product:"Eggplant", price:4}
+var typearray = [
+    {key:1, type:"Education"},
+    {key:2, type:"Recreational"},
+    {key:3, type:"Social"},
+    {key:4, type:"DIY"},
+    {key:5, type:"Charity"},
+    {key:6, type:"Cooking"},
+    {key:7, type:"Relaxation"},
+    {key:8, type:"Music"},
+    {key:9, type:"Busywork"}
 ]
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      stock: []
+      type: '',
+      participants: '',
+      price: [],
+      accessibiliity: [],
+      activity: ''
     }
   }
 
+  selectType(){
+    console.log(this);
+  }
+
   componentDidMount(){
-    fetch('https://www.quandl.com/api/v3/datasets/WIKI/FB/data.json?start_date=20180201&api_key=AzVP9a9xiSGQzU5pkSC9')
+    fetch('https://www.boredapi.com/api/activity')
     .then(response => response.json())
-    .then(data => {this.setState({stock: data.dataset_data.data})})
+    .then(data => {this.setState({type: data.type,
+                                  activity: data.activity})})
   }
 
   render() {
-    console.log(this.state.stock);
     return (
       <div>
         <TitleNav/>
         <Head/>
-        <Finance stock={this.state.stock}/>
-        <ProductList productArray = {array}/>
-        <Forum/>
-        <Youtube/>
+        <Bored typearray={typearray} activity={this.state.activity} selectType={this.selectType.bind(this)}/>
       </div>
     );
   }
