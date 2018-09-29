@@ -12,7 +12,7 @@ class Type extends Component {
     })
     return(
       <div>
-        <select ref="typeSelector" onChange={this.props.selectType}>{type}</select>
+        <select className="typeSelector" onChange={this.props.selectType}>{type}</select>
         <h1>{this.props.activity}</h1>
       </div>
     )

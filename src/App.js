@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import TitleNav from './components/navbar.js';
-import Head from './components/head.js';
 import Bored from './components/Bored/Bored.js';
+import People from './components/Bored/Endpoints.js';
 import './App.css';
 
 var typearray = [
@@ -31,7 +30,7 @@ class App extends Component {
   }
 
   selectType(){
-    console.log(this);
+    console.log(this.value);
   }
 
   componentDidMount(){
@@ -44,9 +43,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <TitleNav/>
-        <Head/>
         <Bored typearray={typearray} activity={this.state.activity} selectType={this.selectType.bind(this)}/>
+        <People/>
       </div>
     );
   }
