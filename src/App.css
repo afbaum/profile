@@ -1,9 +1,9 @@
-.header {
- background-image: url(./arches.svg);
- background-attachment: fixed;
- background-position: center;
- background-repeat: no-repeat;
- background-size: cover;
+.nav-item{
+  color: #4be8ae;
+}
+
+.card {
+  margin-top: 100px;
 }
 
 .parallax {
